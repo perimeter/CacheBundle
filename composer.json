@@ -1,0 +1,27 @@
+{
+    "name": "perimeter/cache-bundle",
+    "description": "Cache integration for the Memento caching library into Symfony2 and Perimeter API Gateway",
+    "keywords":["cache","file","memcache","redis","memento", "api gateway", "perimeter"],
+    "type":"library",
+    "license":"MIT",
+    "authors": [
+        {
+            "name": "Brent Shaffer",
+            "email": "bshafs@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Perimeter\\CacheBundle\\":  ""
+        }
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": "2.5.*",
+        "garyr/memento": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.1.3"
+    }
+}
+
