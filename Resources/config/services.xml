@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="memento.engine.file.class">Memento\Engine\File</parameter>
+        <parameter key="memento.engine.memcache.class">Memento\Engine\Memcache</parameter>
+        <parameter key="memento.client.class">Memento\Client</parameter>
+        <parameter key="memento.engine.memcache.servers" type="collection" />
+        <parameter key="perimeter.cache.class">Perimeter\CacheBundle\Cache\Memento</parameter>
+        <parameter key="perimeter.cache.prefix">perimeter</parameter>
+    </parameters>
+    <services>
+        <service id="memento.engine.file" class="%memento.engine.file.class%" />
+        <service id="memento.engine.memcache" class="%memento.engine.memcache.class%">
+            <argument id="memento.engine.memcache.servers" />
+        </service>
+        <service id="memento.engine" alias="memento.engine.file" />
+        <service id="memento.client" class="%memento.client.class%">
+            <argument type="service" id="memento.engine" />
+        </service>
+        <service id="perimeter.cache" class="%perimeter.cache.service.class%">
+            <argument type="service" id="memento.client" />
+            <argument id="perimeter.cache.prefix" />
+        </service>
+    </services>
+</container>
