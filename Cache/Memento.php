@@ -20,8 +20,12 @@ class Memento implements CacheServiceInterface
     protected $prefix;
     protected $defaultLifetime;
 
-    public function __construct(Client $client, $prefix = null, $defaultLifetime = 3600)
+    public function __construct(Client $client = null, $prefix = null, $defaultLifetime = 3600)
     {
+        if (is_null($client)) {
+            $client = new Client();
+        }
+
         $this->client = $client;
         $this->prefix = $prefix;
         $this->defaultLifetime = $defaultLifetime;

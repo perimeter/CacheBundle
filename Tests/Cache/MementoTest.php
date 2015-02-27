@@ -35,4 +35,11 @@ class MementoTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($cache->isFresh('test-1'));
         $this->assertFalse($cache->retrieve('test-1'));
     }
+
+    public function testMementoWithoutConstructor()
+    {
+        $cache  = new Memento();
+
+        $this->assertFalse($cache->isFresh('this-doesnt-exist'));
+    }
 }
