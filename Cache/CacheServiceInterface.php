@@ -13,7 +13,7 @@ namespace Perimeter\CacheBundle\Cache;
 
 interface CacheServiceInterface
 {
-    public function store($data, $key, $expires);
+    public function store($data, $key, $expires = null);
 
     public function retrieve($key);
 
